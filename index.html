@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Céleste Vương — Voice Actress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#1a0810;          /* deepest background */
+    --oxblood:#2b0d18;       /* section background */
+    --plum:#3d1424;          /* raised panels */
+    --blood:#a51431;         /* primary accent */
+    --rose:#d98a9e;          /* dusty mauve-pink */
+    --blush:#f2d4dc;         /* soft blush text-accent */
+    --bone:#efe4e0;          /* main text */
+    --bone-dim:#b9a5a8;      /* muted text */
+    --gold:#c9a24b;          /* rare metallic detail */
+    --edge:rgba(217,138,158,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--wine);
+    color:var(--bone);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--blood);color:var(--blush)}
+
+  /* soft ambient vignette + grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 0%, rgba(165,20,49,.18), transparent 70%),
+      radial-gradient(ellipse 80% 60% at 50% 120%, rgba(61,20,36,.6), transparent 70%);
+  }
+
+  a{color:inherit;text-decoration:none}
+  .display{font-family:'Cormorant Garamond',serif}
+  .script{font-family:'Pinyon Script',cursive}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px clamp(20px,5vw,64px);
+    background:linear-gradient(to bottom, rgba(26,8,16,.92), rgba(26,8,16,0));
+    backdrop-filter:blur(4px);
+  }
+  nav .brand{
+    font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;
+    letter-spacing:.06em;color:var(--blush);
+  }
+  nav .brand span{color:var(--blood)}
+  nav .links{display:flex;gap:clamp(14px,2.4vw,34px);font-size:.82rem;
+    text-transform:uppercase;letter-spacing:.22em;font-weight:400}
+  nav .links a{color:var(--bone-dim);transition:color .3s,letter-spacing .3s}
+  nav .links a:hover{color:var(--blush)}
+  .menu-btn{display:none;background:none;border:none;color:var(--blush);font-size:1.5rem;cursor:pointer}
+  @media(max-width:760px){
+    nav .links{display:none}
+    .menu-btn{display:block}
+  }
+
+  /* ---------- HERO ---------- */
+  header{
+    min-height:100vh;position:relative;z-index:2;
+    display:grid;grid-template-columns:1.05fr .95fr;align-items:center;
+    gap:clamp(20px,4vw,60px);
+    padding:120px clamp(20px,6vw,90px) 60px;
+  }
+  .hero-copy .eyebrow{
+    font-size:.78rem;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--rose);margin-bottom:26px;display:flex;align-items:center;gap:14px;
+  }
+  .hero-copy .eyebrow::before{content:"";width:46px;height:1px;background:var(--blood)}
+  .hero-copy h1{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:clamp(3.4rem,9vw,7rem);line-height:.94;letter-spacing:-.01em;
+    color:var(--bone);
+  }
+  .hero-copy h1 em{
+    font-style:italic;color:var(--blood);display:block;
+  }
+  .hero-copy h1 .dia{color:var(--rose)}
+  .hero-tag{
+    margin:30px 0 40px;font-size:1.05rem;color:var(--bone-dim);max-width:34ch;
+  }
+  .hero-tag b{color:var(--blush);font-weight:400}
+  .roles{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px}
+  .roles span{
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    border:1px solid var(--edge);border-radius:40px;padding:8px 18px;color:var(--rose);
+  }
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.24em;
+    text-transform:uppercase;padding:15px 32px;cursor:pointer;transition:.35s;
+  }
+  .btn-primary{background:var(--blood);color:var(--blush);border:1px solid var(--blood)}
+  .btn-primary:hover{background:transparent;color:var(--blush);box-shadow:0 0 30px rgba(165,20,49,.5)}
+  .btn-ghost{border:1px solid var(--edge);color:var(--bone-dim)}
+  .btn-ghost:hover{border-color:var(--rose);color:var(--blush)}
+
+  /* portrait — arched cathedral/coffin frame */
+  .hero-portrait{display:flex;justify-content:center;align-items:center;position:relative}
+  .frame{
+    position:relative;width:clamp(240px,32vw,360px);aspect-ratio:320/565;
+    border-radius:50% 50% 12px 12px / 30% 30% 6px 6px;
+    overflow:hidden;
+    border:1px solid var(--rose);
+    box-shadow:
+      0 0 0 8px rgba(43,13,24,.9),
+      0 0 0 9px var(--edge),
+      0 30px 80px rgba(0,0,0,.6),
+      0 0 70px rgba(165,20,49,.28);
+  }
+  .frame img{width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(1.05) contrast(1.03)}
+  .frame::after{ /* romantic glass sheen */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(160deg, rgba(242,212,220,.14), transparent 40%),
+      radial-gradient(ellipse at 50% 120%, rgba(165,20,49,.35), transparent 60%);
+    mix-blend-mode:screen;
+  }
+  .frame-glow{
+    position:absolute;inset:-30px;border-radius:50%;z-index:-1;
+    background:radial-gradient(circle, rgba(165,20,49,.35), transparent 65%);
+    filter:blur(20px);animation:pulse 5s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+  .bat{position:absolute;font-size:1.3rem;color:var(--rose);opacity:.55}
+  .bat.b1{top:4%;left:2%;animation:float 6s ease-in-out infinite}
+  .bat.b2{bottom:10%;right:0%;font-size:1rem;animation:float 7s ease-in-out infinite .5s}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(4deg)}}
+
+  @media(max-width:860px){
+    header{grid-template-columns:1fr;text-align:center;padding-top:110px}
+    .hero-copy .eyebrow{justify-content:center}
+    .hero-tag{margin-left:auto;margin-right:auto}
+    .roles,.cta-row{justify-content:center}
+    .hero-portrait{order:-1;margin-bottom:20px}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;z-index:2;padding:clamp(70px,10vw,120px) clamp(20px,6vw,90px)}
+  .sec-head{display:flex;align-items:baseline;gap:20px;margin-bottom:52px}
+  .sec-head .num{font-family:'Cormorant Garamond',serif;font-style:italic;
+    color:var(--blood);font-size:1.4rem}
+  .sec-head h2{font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:clamp(2.1rem,5vw,3.4rem);color:var(--bone);letter-spacing:.01em}
+  .sec-head .rule{flex:1;height:1px;background:linear-gradient(to right,var(--edge),transparent)}
+
+  /* ---------- REELS ---------- */
+  #reels{background:var(--oxblood)}
+  .reel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+  .reel{
+    background:linear-gradient(180deg,var(--plum),var(--oxblood));
+    border:1px solid var(--edge);padding:30px 28px;position:relative;overflow:hidden;
+    transition:.4s;
+  }
+  .reel::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;
+    background:var(--blood);transform:scaleY(0);transform-origin:top;transition:.4s}
+  .reel:hover{border-color:var(--rose);transform:translateY(-4px)}
+  .reel:hover::before{transform:scaleY(1)}
+  .reel .kind{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose)}
+  .reel h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:500;
+    margin:8px 0 4px;color:var(--bone)}
+  .reel p{font-size:.86rem;color:var(--bone-dim);margin-bottom:22px;min-height:44px}
+  .player{display:flex;align-items:center;gap:14px}
+  .play{width:46px;height:46px;flex:none;border-radius:50%;border:1px solid var(--rose);
+    background:rgba(165,20,49,.12);color:var(--blush);display:grid;place-items:center;
+    cursor:pointer;transition:.3s}
+  .play:hover{background:var(--blood);box-shadow:0 0 22px rgba(165,20,49,.5)}
+  .play svg{width:15px;height:15px;margin-left:2px}
+  .wave{flex:1;height:32px;display:flex;align-items:center;gap:3px}
+  .wave i{flex:1;background:linear-gradient(var(--rose),var(--blood));border-radius:2px;
+    opacity:.5;animation:bar 1.4s ease-in-out infinite}
+  .wave i:nth-child(odd){animation-delay:.2s}
+  .wave i:nth-child(3n){animation-delay:.5s}
+  @keyframes bar{0%,100%{height:20%}50%{height:90%}}
+
+  /* ---------- ABOUT ---------- */
+  #about .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px);align-items:center}
+  .about-text p{color:var(--bone-dim);margin-bottom:20px;font-size:1.02rem}
+  .about-text p b{color:var(--blush);font-weight:400}
+  .drop{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--blood);
+    font-size:3.2rem;float:left;line-height:.8;margin:6px 14px 0 0}
+  .pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.5rem,3.4vw,2.3rem);
+    color:var(--rose);border-left:2px solid var(--blood);padding-left:26px;line-height:1.3}
+  .pull .script{display:block;color:var(--gold);font-size:1.5rem;margin-top:14px}
+  @media(max-width:760px){#about .about-wrap{grid-template-columns:1fr}}
+
+  /* ---------- STUDIO ---------- */
+  #studio{background:var(--oxblood)}
+  .kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}
+  .kit div{border:1px solid var(--edge);padding:26px 24px;transition:.35s}
+  .kit div:hover{border-color:var(--rose);background:rgba(61,20,36,.5)}
+  .kit .lbl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--rose)}
+  .kit .val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--bone);margin-top:6px}
+
+  /* ---------- CONTACT ---------- */
+  #contact{text-align:center}
+  #contact .sec-head{justify-content:center}#contact .rule{display:none}
+  .contact-lead{font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:clamp(1.6rem,4vw,2.6rem);color:var(--blush);max-width:20ch;margin:0 auto 14px;line-height:1.25}
+  .contact-sub{color:var(--bone-dim);margin-bottom:40px}
+  .contact-links{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;
+    font-size:.82rem;letter-spacing:.2em;text-transform:uppercase}
+  .contact-links a{color:var(--bone-dim);padding-bottom:6px;border-bottom:1px solid transparent;transition:.3s}
+  .contact-links a:hover{color:var(--blush);border-color:var(--blood)}
+  .contact-mail{display:inline-block;margin-bottom:44px;font-family:'Cormorant Garamond',serif;
+    font-size:clamp(1.4rem,3.6vw,2.2rem);color:var(--bone);border-bottom:1px solid var(--edge);
+    padding-bottom:6px;transition:.3s}
+  .contact-mail:hover{color:var(--blood);border-color:var(--blood)}
+
+  footer{text-align:center;padding:40px 20px 50px;position:relative;z-index:2;
+    font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim);
+    border-top:1px solid var(--edge)}
+  footer .script{text-transform:none;letter-spacing:0;color:var(--rose);font-size:1.3rem;display:block;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="brand">Céleste<span>·</span>Vương</a>
+  <div class="links">
+    <a href="#reels">Reels</a>
+    <a href="#about">About</a>
+    <a href="#studio">Studio</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="menu-btn" aria-label="Menu">☾</button>
+</nav>
+
+<header>
+  <div class="hero-copy">
+    <div class="eyebrow">Voice Actress &amp; Singer</div>
+    <h1>Cél<span class="dia">e</span>ste<em>Vương</em></h1>
+    <p class="hero-tag">A young, versatile voice with a <b>velvet-dark charm</b> — bringing characters, commercials &amp; song to life from a soft-lit corner of the night.</p>
+    <div class="roles">
+      <span>Animation</span><span>Video Games</span><span>Commercial</span><span>Narration</span><span>Singing</span>
+    </div>
+    <div class="cta-row">
+      <a href="#reels" class="btn btn-primary">Hear the Reels</a>
+      <a href="#contact" class="btn btn-ghost">Book Céleste</a>
+    </div>
+  </div>
+
+  <div class="hero-portrait">
+    <span class="bat b1">🦇</span>
+    <span class="bat b2">🦇</span>
+    <div class="frame">
+      <div class="frame-glow"></div>
+      <img src="celeste-portrait.gif" alt="Céleste Vương portrait">
+    </div>
+  </div>
+</header>
+
+<section id="reels">
+  <div class="sec-head">
+    <span class="num">I</span>
+    <h2>Demo Reels</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="reel-grid">
+    <div class="reel">
+      <span class="kind">Character · Animation</span>
+      <h3>Character Reel</h3>
+      <p>Range from sweet ingénue to sly, fanged femme — cartoon &amp; anime-ready.</p>
+      <div class="player">
+        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="reel">
+      <span class="kind">Games</span>
+      <h3>Video Game Reel</h3>
+      <p>Heroines, NPCs &amp; creatures of the night for interactive worlds.</p>
+      <div class="player">
+        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="reel">
+      <span class="kind">Commercial</span>
+      <h3>Commercial Reel</h3>
+      <p>Warm, believable, conversational — the friend who sells without selling.</p>
+      <div class="player">
+        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="reel">
+      <span class="kind">Narration · Song</span>
+      <h3>Narration &amp; Vocals</h3>
+      <p>Storybook narration and original singing — lullabies with a little bite.</p>
+      <div class="player">
+        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-head">
+    <span class="num">II</span>
+    <h2>About Céleste</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="about-wrap">
+    <div class="about-text">
+      <p><span class="drop">C</span>éleste Vương is a Vietnamese-American voice actress, singer and writer with a voice made for the space between sweet and shadowy. Whether she's voicing a bubbly best friend or a centuries-old vampire with a soft spot, she brings warmth, range and a little mischief to every take.</p>
+      <p>She works from a home studio and has lent her voice to <b>84+ collaborative projects</b> in the indie voice-acting community — always game for characters that live a little in the dark.</p>
+      <p>If you need a voice that can be both the girl-next-door and the thing at the window, Céleste would love to read for you.</p>
+    </div>
+    <blockquote class="pull">
+      "The sweetest voices always have a little bite."
+      <span class="script">— she/her, 21+</span>
+    </blockquote>
+  </div>
+</section>
+
+<section id="studio">
+  <div class="sec-head">
+    <span class="num">III</span>
+    <h2>Home Studio</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="kit">
+    <div><div class="lbl">Microphone</div><div class="val">Blue Yeti</div></div>
+    <div><div class="lbl">DAW</div><div class="val">Audacity</div></div>
+    <div><div class="lbl">Direction</div><div class="val">Remote-ready</div></div>
+    <div><div class="lbl">Turnaround</div><div class="val">Fast &amp; friendly</div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-head">
+    <span class="num">IV</span>
+    <h2>Let's Talk</h2>
+  </div>
+  <p class="contact-lead">Have a character in need of a voice?</p>
+  <p class="contact-sub">Booking, auditions &amp; collaborations welcome — day or night.</p>
+  <a href="mailto:hello@celestevuong.com" class="contact-mail">hello@celestevuong.com</a>
+  <div class="contact-links">
+    <a href="https://www.castingcall.club/celestevuong" target="_blank" rel="noopener">Casting Call Club</a>
+    <a href="#">Instagram</a>
+    <a href="#">Twitter / X</a>
+    <a href="#">TikTok</a>
+  </div>
+</section>
+
+<footer>
+  <span class="script">Céleste Vương</span>
+  © 2026 · Voice Actress · Made with a little moonlight
+</footer>
+
+<script>
+  // gentle nav reveal on scroll
+  let last = 0;
+  const nav = document.querySelector('nav');
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    nav.style.boxShadow = y > 40 ? '0 1px 0 var(--edge)' : 'none';
+  });
+  // demo play buttons — mock toggle (no real audio yet)
+  document.querySelectorAll('.play').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const w = b.parentElement.querySelector('.wave');
+      const on = b.dataset.on === '1';
+      b.dataset.on = on ? '0':'1';
+      w.style.filter = on ? 'grayscale(1) opacity(.5)' : 'none';
+      b.innerHTML = on
+        ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
+        : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+    });
+  });
+  // reduced motion
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.wave i,.frame-glow,.bat').forEach(e=>e.style.animation='none');
+  }
+</script>
+</body>
+</html>
