@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -65,8 +65,10 @@
   .menu-btn.open{transform:rotate(140deg)}
   @media(max-width:760px){
     nav{flex-wrap:wrap}
-    .menu-btn{display:block}
+    .menu-btn{display:block;order:2}
+    nav .brand{order:1}
     nav .links{
+      order:3;flex-basis:100%;
       display:flex;flex-direction:column;width:100%;
       gap:0;max-height:0;overflow:hidden;
       transition:max-height .4s ease;
