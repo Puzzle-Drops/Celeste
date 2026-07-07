@@ -178,12 +178,16 @@
     cursor:pointer;transition:.3s}
   .play:hover{background:var(--blood);box-shadow:0 0 22px rgba(165,20,49,.5)}
   .play svg{width:15px;height:15px;margin-left:2px}
-  .wave{flex:1;height:32px;display:flex;align-items:center;gap:3px}
-  .wave i{flex:1;background:linear-gradient(var(--rose),var(--blood));border-radius:2px;
-    opacity:.5;animation:bar 1.4s ease-in-out infinite}
-  .wave i:nth-child(odd){animation-delay:.2s}
-  .wave i:nth-child(3n){animation-delay:.5s}
-  @keyframes bar{0%,100%{height:20%}50%{height:90%}}
+  .play.play--pause svg{margin-left:0}
+  .track{flex:1;height:5px;border-radius:4px;background:rgba(217,138,158,.18);
+    cursor:pointer;position:relative;overflow:hidden}
+  .track-fill{position:absolute;left:0;top:0;height:100%;width:0;
+    background:linear-gradient(90deg,var(--rose),var(--blood));border-radius:4px;transition:width .1s linear}
+  .time{font-size:.72rem;color:var(--bone-dim);font-variant-numeric:tabular-nums;min-width:34px;text-align:right}
+  .player.is-missing{opacity:.55}
+  .player.is-missing .play{cursor:not-allowed;border-color:var(--edge)}
+  .player.is-missing .time{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--rose);min-width:auto}
 
   /* ---------- ABOUT ---------- */
   #about .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,80px);align-items:center}
@@ -273,36 +277,40 @@
       <span class="kind">Character · Animation</span>
       <h3>Character Reel</h3>
       <p>Range from sweet ingénue to sly, fanged femme — cartoon &amp; anime-ready.</p>
-      <div class="player">
-        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="player" data-src="character-reel.mp3">
+        <button class="play" aria-label="Play character reel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="track"><div class="track-fill"></div></div>
+        <span class="time">0:00</span>
       </div>
     </div>
     <div class="reel">
       <span class="kind">Games</span>
       <h3>Video Game Reel</h3>
       <p>Heroines, NPCs &amp; creatures of the night for interactive worlds.</p>
-      <div class="player">
-        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="player" data-src="game-reel.mp3">
+        <button class="play" aria-label="Play video game reel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="track"><div class="track-fill"></div></div>
+        <span class="time">0:00</span>
       </div>
     </div>
     <div class="reel">
       <span class="kind">Commercial</span>
       <h3>Commercial Reel</h3>
       <p>Warm, believable, conversational — the friend who sells without selling.</p>
-      <div class="player">
-        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="player" data-src="commercial-reel.mp3">
+        <button class="play" aria-label="Play commercial reel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="track"><div class="track-fill"></div></div>
+        <span class="time">0:00</span>
       </div>
     </div>
     <div class="reel">
       <span class="kind">Narration · Song</span>
       <h3>Narration &amp; Vocals</h3>
       <p>Storybook narration and original singing — lullabies with a little bite.</p>
-      <div class="player">
-        <button class="play" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="player" data-src="narration-reel.mp3">
+        <button class="play" aria-label="Play narration reel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="track"><div class="track-fill"></div></div>
+        <span class="time">0:00</span>
       </div>
     </div>
   </div>
@@ -370,21 +378,61 @@
     const y = scrollY;
     nav.style.boxShadow = y > 40 ? '0 1px 0 var(--edge)' : 'none';
   });
-  // demo play buttons — mock toggle (no real audio yet)
-  document.querySelectorAll('.play').forEach(b=>{
-    b.addEventListener('click',()=>{
-      const w = b.parentElement.querySelector('.wave');
-      const on = b.dataset.on === '1';
-      b.dataset.on = on ? '0':'1';
-      w.style.filter = on ? 'grayscale(1) opacity(.5)' : 'none';
-      b.innerHTML = on
-        ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
-        : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+  // ---- real audio players ----
+  const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  const PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+  const fmt = s => isFinite(s) ? Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0') : '0:00';
+  let current = null; // only one reel plays at a time
+
+  document.querySelectorAll('.player').forEach(p=>{
+    const src = p.dataset.src;
+    const btn = p.querySelector('.play');
+    const fill = p.querySelector('.track-fill');
+    const track = p.querySelector('.track');
+    const time = p.querySelector('.time');
+    const audio = new Audio();
+    audio.preload = 'metadata';
+    audio.src = src;
+
+    // if the mp3 isn't there yet, show a gentle placeholder instead of breaking
+    audio.addEventListener('error', ()=>{
+      p.classList.add('is-missing');
+      time.textContent = 'coming soon';
+      btn.disabled = true;
+    });
+    audio.addEventListener('loadedmetadata', ()=>{ time.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', ()=>{
+      fill.style.width = (audio.currentTime/audio.duration*100||0)+'%';
+      time.textContent = fmt(audio.duration - audio.currentTime);
+    });
+    audio.addEventListener('ended', ()=>{
+      btn.innerHTML = PLAY; btn.classList.remove('play--pause');
+      fill.style.width='0%'; time.textContent = fmt(audio.duration); current=null;
+    });
+
+    btn.addEventListener('click', ()=>{
+      if(p.classList.contains('is-missing')) return;
+      if(audio.paused){
+        if(current && current!==audio){ current.pause(); }
+        audio.play(); current = audio;
+        btn.innerHTML = PAUSE; btn.classList.add('play--pause');
+      } else {
+        audio.pause(); btn.innerHTML = PLAY; btn.classList.remove('play--pause');
+      }
+    });
+    audio.addEventListener('pause', ()=>{ if(!audio.ended){ btn.innerHTML=PLAY; btn.classList.remove('play--pause'); }});
+
+    // scrub by clicking the track
+    track.addEventListener('click', e=>{
+      if(!isFinite(audio.duration)) return;
+      const r = track.getBoundingClientRect();
+      audio.currentTime = ((e.clientX - r.left)/r.width)*audio.duration;
     });
   });
+
   // reduced motion
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.wave i,.frame-glow,.bat').forEach(e=>e.style.animation='none');
+    document.querySelectorAll('.frame-glow,.bat').forEach(e=>e.style.animation='none');
   }
 </script>
 </body>
