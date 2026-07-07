@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Céleste Vương — Voice Actress</title>
+<title>Céleste Vương · Voice Actress</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -61,10 +61,18 @@
     text-transform:uppercase;letter-spacing:.22em;font-weight:400}
   nav .links a{color:var(--bone-dim);transition:color .3s,letter-spacing .3s}
   nav .links a:hover{color:var(--blush)}
-  .menu-btn{display:none;background:none;border:none;color:var(--blush);font-size:1.5rem;cursor:pointer}
+  .menu-btn{display:none;background:none;border:none;color:var(--blush);font-size:1.5rem;cursor:pointer;line-height:1;transition:transform .4s}
+  .menu-btn.open{transform:rotate(140deg)}
   @media(max-width:760px){
-    nav .links{display:none}
+    nav{flex-wrap:wrap}
     .menu-btn{display:block}
+    nav .links{
+      display:flex;flex-direction:column;width:100%;
+      gap:0;max-height:0;overflow:hidden;
+      transition:max-height .4s ease;
+    }
+    nav .links.open{max-height:320px;margin-top:14px}
+    nav .links a{padding:14px 4px;border-top:1px solid var(--edge)}
   }
 
   /* ---------- HERO ---------- */
@@ -87,7 +95,6 @@
   .hero-copy h1 em{
     font-style:italic;color:var(--blood);display:block;
   }
-  .hero-copy h1 .dia{color:var(--rose)}
   .hero-tag{
     margin:30px 0 40px;font-size:1.05rem;color:var(--bone-dim);max-width:34ch;
   }
@@ -107,7 +114,7 @@
   .btn-ghost{border:1px solid var(--edge);color:var(--bone-dim)}
   .btn-ghost:hover{border-color:var(--rose);color:var(--blush)}
 
-  /* portrait — arched cathedral/coffin frame */
+  /* portrait: arched cathedral/coffin frame */
   .hero-portrait{display:flex;justify-content:center;align-items:center;position:relative}
   .frame{
     position:relative;width:clamp(240px,32vw,360px);aspect-ratio:320/565;
@@ -194,11 +201,39 @@
   .about-text p{color:var(--bone-dim);margin-bottom:20px;font-size:1.02rem}
   .about-text p b{color:var(--blush);font-weight:400}
   .drop{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--blood);
-    font-size:3.2rem;float:left;line-height:.8;margin:6px 14px 0 0}
+    font-size:3.6rem;float:left;line-height:1;margin:0 12px -4px 0}
   .pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.5rem,3.4vw,2.3rem);
     color:var(--rose);border-left:2px solid var(--blood);padding-left:26px;line-height:1.3}
   .pull .script{display:block;color:var(--gold);font-size:1.5rem;margin-top:14px}
   @media(max-width:760px){#about .about-wrap{grid-template-columns:1fr}}
+
+  /* ---------- CURRENT PROJECT ---------- */
+  .project-card{
+    display:grid;grid-template-columns:1fr auto;align-items:center;gap:clamp(24px,5vw,60px);
+    padding:clamp(30px,5vw,52px);
+    background:linear-gradient(135deg,var(--plum),var(--oxblood));
+    border:1px solid var(--edge);position:relative;overflow:hidden;transition:.4s;
+  }
+  .project-card::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 50% 80% at 100% 50%, rgba(165,20,49,.18), transparent 70%);
+    opacity:0;transition:opacity .4s}
+  .project-card:hover{border-color:var(--rose);transform:translateY(-4px);
+    box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 50px rgba(165,20,49,.15)}
+  .project-card:hover::before{opacity:1}
+  .project-kind{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rose)}
+  .project-meta h3{font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:clamp(1.8rem,4vw,2.6rem);color:var(--bone);margin:8px 0 14px}
+  .project-meta p{color:var(--bone-dim);font-size:1rem;max-width:52ch;margin-bottom:22px}
+  .project-link{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blush);
+    display:inline-flex;align-items:center;gap:10px}
+  .project-link::after{content:"→";transition:transform .3s}
+  .project-card:hover .project-link::after{transform:translateX(6px)}
+  .project-glyph{width:clamp(70px,10vw,110px);color:var(--blood);flex:none;position:relative;z-index:1}
+  .project-glyph svg{width:100%;height:auto;filter:drop-shadow(0 0 18px rgba(165,20,49,.4))}
+  @media(max-width:640px){
+    .project-card{grid-template-columns:1fr;text-align:left}
+    .project-glyph{display:none}
+  }
 
   /* ---------- STUDIO ---------- */
   #studio{background:var(--oxblood)}
@@ -236,6 +271,7 @@
   <div class="links">
     <a href="#reels">Reels</a>
     <a href="#about">About</a>
+    <a href="#project">Project</a>
     <a href="#studio">Studio</a>
     <a href="#contact">Contact</a>
   </div>
@@ -245,8 +281,8 @@
 <header>
   <div class="hero-copy">
     <div class="eyebrow">Voice Actress &amp; Singer</div>
-    <h1>Cél<span class="dia">e</span>ste<em>Vương</em></h1>
-    <p class="hero-tag">A young, versatile voice with a <b>velvet-dark charm</b> — bringing characters, commercials &amp; song to life from a soft-lit corner of the night.</p>
+    <h1>Céleste <em>Vương</em></h1>
+    <p class="hero-tag">A young, versatile voice with a <b>velvet-dark charm</b>, bringing characters, commercials &amp; song to life from a soft-lit corner of the night.</p>
     <div class="roles">
       <span>Animation</span><span>Video Games</span><span>Commercial</span><span>Narration</span><span>Singing</span>
     </div>
@@ -276,7 +312,7 @@
     <div class="reel">
       <span class="kind">Character · Animation</span>
       <h3>Character Reel</h3>
-      <p>Range from sweet ingénue to sly, fanged femme — cartoon &amp; anime-ready.</p>
+      <p>Range from sweet ingénue to sly, fanged femme. Cartoon &amp; anime-ready.</p>
       <div class="player" data-src="character-reel.mp3">
         <button class="play" aria-label="Play character reel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
         <div class="track"><div class="track-fill"></div></div>
@@ -296,7 +332,7 @@
     <div class="reel">
       <span class="kind">Commercial</span>
       <h3>Commercial Reel</h3>
-      <p>Warm, believable, conversational — the friend who sells without selling.</p>
+      <p>Warm, believable, conversational. The friend who sells without selling.</p>
       <div class="player" data-src="commercial-reel.mp3">
         <button class="play" aria-label="Play commercial reel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
         <div class="track"><div class="track-fill"></div></div>
@@ -306,7 +342,7 @@
     <div class="reel">
       <span class="kind">Narration · Song</span>
       <h3>Narration &amp; Vocals</h3>
-      <p>Storybook narration and original singing — lullabies with a little bite.</p>
+      <p>Storybook narration and original singing. Lullabies with a little bite.</p>
       <div class="player" data-src="narration-reel.mp3">
         <button class="play" aria-label="Play narration reel"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
         <div class="track"><div class="track-fill"></div></div>
@@ -325,19 +361,41 @@
   <div class="about-wrap">
     <div class="about-text">
       <p><span class="drop">C</span>éleste Vương is a Vietnamese-American voice actress, singer and writer with a voice made for the space between sweet and shadowy. Whether she's voicing a bubbly best friend or a centuries-old vampire with a soft spot, she brings warmth, range and a little mischief to every take.</p>
-      <p>She works from a home studio and has lent her voice to <b>84+ collaborative projects</b> in the indie voice-acting community — always game for characters that live a little in the dark.</p>
+      <p>She works from a home studio and has lent her voice to <b>84+ collaborative projects</b> in the indie voice-acting community, always game for characters that live a little in the dark.</p>
       <p>If you need a voice that can be both the girl-next-door and the thing at the window, Céleste would love to read for you.</p>
     </div>
     <blockquote class="pull">
       "The sweetest voices always have a little bite."
-      <span class="script">— she/her, 21+</span>
+      <span class="script">she/her, 21+</span>
     </blockquote>
   </div>
 </section>
 
-<section id="studio">
+<section id="project">
   <div class="sec-head">
     <span class="num">III</span>
+    <h2>Current Project</h2>
+    <span class="rule"></span>
+  </div>
+  <a class="project-card" href="https://open.spotify.com/show/3VHlOBlbUvpbjbWxudOkuj" target="_blank" rel="noopener">
+    <div class="project-meta">
+      <span class="project-kind">Actual-Play Podcast</span>
+      <h3>Punch &amp; Roll for Initiative</h3>
+      <p>A cast of audiobook narrators and voice actors play Dungeons &amp; Dragons through a world of their own making. Céleste joins the table for the story, streaming live every other Friday.</p>
+      <span class="project-link">Listen &amp; watch live</span>
+    </div>
+    <div class="project-glyph">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M12 3l7 4v6c0 4-3 6.5-7 8-4-1.5-7-4-7-8V7l7-4z"/>
+        <path d="M9.5 11.5l1.8 1.8 3.4-3.6"/>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<section id="studio">
+  <div class="sec-head">
+    <span class="num">IV</span>
     <h2>Home Studio</h2>
     <span class="rule"></span>
   </div>
@@ -351,17 +409,19 @@
 
 <section id="contact">
   <div class="sec-head">
-    <span class="num">IV</span>
+    <span class="num">V</span>
     <h2>Let's Talk</h2>
   </div>
   <p class="contact-lead">Have a character in need of a voice?</p>
-  <p class="contact-sub">Booking, auditions &amp; collaborations welcome — day or night.</p>
+  <p class="contact-sub">Booking, auditions &amp; collaborations welcome, day or night.</p>
   <a href="mailto:hello@celestevuong.com" class="contact-mail">hello@celestevuong.com</a>
   <div class="contact-links">
+    <a href="https://www.instagram.com/celestevuong_" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.threads.net/@celestevuong_" target="_blank" rel="noopener">Threads</a>
+    <a href="https://www.tiktok.com/@celestevuong" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.youtube.com/@celestevuong" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.twitch.tv/celestevuong" target="_blank" rel="noopener">Twitch</a>
     <a href="https://www.castingcall.club/celestevuong" target="_blank" rel="noopener">Casting Call Club</a>
-    <a href="#">Instagram</a>
-    <a href="#">Twitter / X</a>
-    <a href="#">TikTok</a>
   </div>
 </section>
 
@@ -371,13 +431,23 @@
 </footer>
 
 <script>
-  // gentle nav reveal on scroll
-  let last = 0;
+  // subtle nav shadow on scroll
   const nav = document.querySelector('nav');
   addEventListener('scroll', () => {
-    const y = scrollY;
-    nav.style.boxShadow = y > 40 ? '0 1px 0 var(--edge)' : 'none';
+    nav.style.boxShadow = scrollY > 40 ? '0 1px 0 var(--edge)' : 'none';
   });
+
+  // mobile menu toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const links = document.querySelector('.links');
+  menuBtn.addEventListener('click', () => {
+    links.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    menuBtn.classList.remove('open');
+  }));
   // ---- real audio players ----
   const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
   const PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
